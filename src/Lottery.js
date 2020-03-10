@@ -15,7 +15,7 @@ class Lottery extends Component {
         this.generate = this.generate.bind();
     }
     generate() {
-        //
+        Math.floor(Math.random() * this.props.maxNum);
     }
     handleClick() {
         this.generate();
