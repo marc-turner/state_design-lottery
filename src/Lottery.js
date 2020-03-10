@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ball from './Ball';
+import './Lottery.css';
 
 class Lottery extends Component {
     static defaultProps = {
@@ -12,10 +13,14 @@ class Lottery extends Component {
         this.state = {
             nums: Array.from({ length: this.props.numBalls })
         };
-        this.generate = this.generate.bind();
+        this.handleClick = this.handleClick.bind(this);
     }
     generate() {
-        Math.floor(Math.random() * this.props.maxNum);
+        this.setState(curState => ({
+            nums: curState.nums.map(n =>
+                Math.floor(Math.random() * this.props.maxNum + 1)
+            )
+        }));
     }
     handleClick() {
         this.generate();
